@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gold Fish Oranda Ankara | Premium Akvaryum Hesaplama Merkezi</title>
-  <meta name="description" content="Gold Fish Oranda Ankara premium akvaryum hesaplama merkezi. Yem, hacim, tuz, su değişimi, Easy-Life doz ve bakım önerileri." />
+  <meta name="description" content="Gold Fish Oranda Ankara premium akvaryum hesaplama merkezi. Yem, hacim, tuz, su değişimi, Easy-Life doz ve Balığıma Ne Oldu asistanı." />
   <meta name="theme-color" content="#050505" />
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
@@ -28,6 +28,7 @@
 
     <nav>
       <a href="#tools">Hesaplayıcılar</a>
+      <a href="#baligim">Balığıma Ne Oldu?</a>
       <a href="#contact">İletişim</a>
       <a href="https://goldfishoranda.com" target="_blank">Ana Site</a>
       <a class="nav-wa" href="https://wa.me/905337734115" target="_blank">WhatsApp</a>
@@ -42,16 +43,63 @@
       <h1>Gold Fish Oranda<br>Dijital Platformu</h1>
       <p class="hero-text">Oranda ve japon balığı hobisi için yemleme, hacim, tuz, su değişimi, filtre debisi ve bakım önerilerini tek ekranda hesaplayın.</p>
       <div class="hero-buttons">
-        <a class="btn gold" href="#tools">Hesaplamaya Başla</a>
-        <a class="btn outline" href="https://wa.me/905337734115" target="_blank">WhatsApp Destek</a>
+        <a class="btn gold" href="#baligim">Balığıma Ne Oldu?</a>
+        <a class="btn outline" href="#tools">Hesaplamaya Başla</a>
       </div>
     </section>
 
     <section class="quick">
+      <a href="#baligim">🤖 Balığıma Ne Oldu?</a>
       <a href="#yem">🍽️ Yem Hesapla</a>
       <a href="#hacim">💧 Akvaryum Hacmi</a>
-      <a href="#tuz">🧂 Tuz Hesabı</a>
       <a href="#easy">🧪 Easy-Life Doz</a>
+    </section>
+
+    <section id="baligim" class="diagnosis">
+      <div class="section-title compact">
+        <span>YAPAY ZEKÂ DESTEKLİ ÖN BAKIM ASİSTANI</span>
+        <h2>Balığıma Ne Oldu?</h2>
+        <p>Belirtileri işaretleyin; sistem olası nedenleri, yapılacakları, Easy-Life önerisini, su değişim miktarını ve yemleme planını tek ekranda sunsun.</p>
+      </div>
+
+      <div class="diag-layout">
+        <div class="diag-panel">
+          <h3>🐟 Belirtiler</h3>
+          <label class="check"><input type="checkbox" id="sBottom"> Balık dipte duruyor</label>
+          <label class="check"><input type="checkbox" id="sNoEat"> Yem yemiyor</label>
+          <label class="check"><input type="checkbox" id="sWhite"> Beyaz benek var</label>
+          <label class="check"><input type="checkbox" id="sGill"> Solungaç hızlı çalışıyor</label>
+          <label class="check"><input type="checkbox" id="sCloudy"> Su bulanık</label>
+
+          <div class="diag-grid-small">
+            <label>Akvaryum litre<input id="diagLiter" type="number" value="100"></label>
+            <label>Balık sayısı<input id="diagFish" type="number" value="8"></label>
+          </div>
+
+          <label>Son su değişimi</label>
+          <select id="diagWaterAge">
+            <option value="fresh">0-3 gün önce</option>
+            <option value="week" selected>4-10 gün önce</option>
+            <option value="old">10 günden fazla</option>
+          </select>
+
+          <label>Akvaryum durumu</label>
+          <select id="diagTankAge">
+            <option value="new">Yeni kurulum / yeni balık eklendi</option>
+            <option value="stable" selected>Kurulu ve oturmuş sistem</option>
+            <option value="crowded">Yoğun balık var</option>
+          </select>
+
+          <button onclick="fishDoctor()">Ön Bakım Planı Oluştur</button>
+        </div>
+
+        <div class="diag-result" id="doctorResult">
+          <h3>Sonuç burada görünecek</h3>
+          <p>Belirtileri seçip hesapla butonuna basın.</p>
+        </div>
+      </div>
+
+      <p class="medical-note">Not: Bu bölüm veteriner teşhisi değildir. Şiddetli kayıp, hızlı soluma, yara, kanama veya toplu ölüm varsa profesyonel destek alın. Ürünleri kullanmadan önce etiket talimatlarını okuyun.</p>
     </section>
 
     <section id="tools" class="section-title">
@@ -124,32 +172,6 @@
         <button onclick="doseCalc()">Hesapla</button>
         <div id="doseResult" class="result"></div>
       </article>
-
-      <article class="card searchable" data-name="oranda kapasite kaç balık beslenir">
-        <h3>🐠 Kaç Oranda Beslenir?</h3>
-        <p>Litre ve balık boyuna göre ortalama kapasite önerisi.</p>
-        <label>Akvaryum litre</label><input id="capLiter" type="number" value="120" />
-        <label>Balık boyu</label>
-        <select id="capSize"><option value="20">5-8 cm yavru</option><option value="30" selected>8-12 cm genç</option><option value="45">12 cm üzeri büyük</option></select>
-        <button onclick="capCalc()">Hesapla</button>
-        <div id="capResult" class="result"></div>
-      </article>
-
-      <article class="card searchable" data-name="akıllı bakım önerisi su bulanık nitrit">
-        <h3>🤖 Akıllı Bakım Önerisi</h3>
-        <p>Duruma göre pratik bakım önerisi oluşturur.</p>
-        <label>Akvaryum litre</label><input id="smartLiter" type="number" value="100" />
-        <label>Balık sayısı</label><input id="smartFish" type="number" value="8" />
-        <label>Durum</label>
-        <select id="smartIssue">
-          <option value="normal">Her şey normal</option>
-          <option value="cloudy">Su bulanık</option>
-          <option value="nitrite">Nitrit / amonyak şüphesi</option>
-          <option value="new">Yeni kurulum</option>
-        </select>
-        <button onclick="smartAdvice()">Öneri Oluştur</button>
-        <div id="smartResult" class="result"></div>
-      </article>
     </section>
 
     <section class="product-strip">
@@ -173,11 +195,6 @@
           <a href="https://www.instagram.com/goldfish.orandaankara" target="_blank">📸 Instagram</a>
         </div>
       </div>
-    </section>
-
-    <section class="seo">
-      <h2>Akvaryum hesaplama merkezi nedir?</h2>
-      <p>Bu platform; oranda, japon balığı ve akvaryum hobicileri için yem miktarı, akvaryum hacmi, tuz oranı, su değişimi, filtre debisi ve ürün dozlarını daha kolay hesaplamak için hazırlanmıştır. Sonuçlar bilgilendirme amaçlıdır.</p>
     </section>
   </main>
 
