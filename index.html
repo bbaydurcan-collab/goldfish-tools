@@ -3,59 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gold Fish Oranda Ankara | Akvaryum Hesaplama Merkezi</title>
-  <meta name="description" content="Gold Fish Oranda Ankara ücretsiz akvaryum hesaplama merkezi. Akvaryum hacmi, yem miktarı, tuz, su değişimi, filtre debisi ve Easy-Life doz hesaplayıcıları." />
+  <title>Gold Fish Oranda Ankara | Premium Akvaryum Hesaplama Merkezi</title>
+  <meta name="description" content="Gold Fish Oranda Ankara premium akvaryum hesaplama merkezi. Yem, hacim, tuz, su değişimi, Easy-Life doz ve bakım önerileri." />
+  <meta name="theme-color" content="#050505" />
   <link rel="icon" href="logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="loader" class="loader">
-    <div class="loader-card">
+    <div class="loader-box">
       <img src="logo.png" alt="Gold Fish Oranda Ankara" />
-      <p>Dijital Platform Yükleniyor...</p>
+      <span>PREMIUM DİJİTAL PLATFORM</span>
     </div>
   </div>
 
   <header class="topbar">
-    <div class="brand">
-      <img src="logo.png" alt="Gold Fish Oranda Ankara Logo" />
+    <a class="brand" href="#top">
+      <img src="logo.png" alt="Gold Fish Oranda Ankara" />
       <div>
         <strong>Gold Fish Oranda Ankara</strong>
-        <span>Premium Oranda • Premium Hobi • Premium Hizmet</span>
+        <small>Premium Oranda • Premium Hobi • Premium Hizmet</small>
       </div>
-    </div>
+    </a>
+
     <nav>
-      <a href="https://goldfishoranda.com">Ana Site</a>
-      <a href="https://www.instagram.com/goldfish.orandaankara" target="_blank">Instagram</a>
-      <a href="https://wa.me/905337734115" target="_blank">WhatsApp</a>
+      <a href="#tools">Hesaplayıcılar</a>
+      <a href="#contact">İletişim</a>
+      <a href="https://goldfishoranda.com" target="_blank">Ana Site</a>
+      <a class="nav-wa" href="https://wa.me/905337734115" target="_blank">WhatsApp</a>
     </nav>
   </header>
 
-  <main class="wrap">
+  <main id="top">
     <section class="hero">
+      <div class="hero-glow"></div>
       <img class="hero-logo" src="logo.png" alt="Gold Fish Oranda Ankara" />
-      <div class="badge">Türkiye'nin Premium Akvaryum Hesaplama Merkezi</div>
-      <h1>Gold Fish Oranda Dijital Platformu</h1>
-      <p>Yemleme, su değişimi, tuz, ilaç, Easy-Life dozları ve akvaryum kapasitesi hesaplarını saniyeler içinde yapın.</p>
-      <a class="main-btn" href="#tools">Hesaplamaya Başla</a>
+      <p class="eyebrow">Türkiye'nin Premium Akvaryum Hesaplama Merkezi</p>
+      <h1>Gold Fish Oranda<br>Dijital Platformu</h1>
+      <p class="hero-text">Oranda ve japon balığı hobisi için yemleme, hacim, tuz, su değişimi, filtre debisi ve bakım önerilerini tek ekranda hesaplayın.</p>
+      <div class="hero-buttons">
+        <a class="btn gold" href="#tools">Hesaplamaya Başla</a>
+        <a class="btn outline" href="https://wa.me/905337734115" target="_blank">WhatsApp Destek</a>
+      </div>
     </section>
 
-    <section class="stats">
-      <div><b>Ücretsiz</b><span>Tüm hobiciler için</span></div>
-      <div><b>Mobil</b><span>Telefon ve tablet uyumlu</span></div>
-      <div><b>Hızlı</b><span>Saniyeler içinde sonuç</span></div>
-      <div><b>Premium</b><span>Gold Fish Oranda imzasıyla</span></div>
+    <section class="quick">
+      <a href="#yem">🍽️ Yem Hesapla</a>
+      <a href="#hacim">💧 Akvaryum Hacmi</a>
+      <a href="#tuz">🧂 Tuz Hesabı</a>
+      <a href="#easy">🧪 Easy-Life Doz</a>
     </section>
 
-    <section id="tools" class="tools-head">
-      <h2>Hesaplama Araçları</h2>
-      <input id="search" placeholder="🔍 Hesap makinesi ara... yem, tuz, hacim, Easy-Life" oninput="filterCards()" />
+    <section id="tools" class="section-title">
+      <span>PROFESYONEL ARAÇLAR</span>
+      <h2>Akvaryum hesaplamaları</h2>
+      <p>Gold Fish Oranda Ankara tarafından hobiciler için hazırlanmıştır.</p>
+      <input id="search" oninput="filterCards()" placeholder="🔍 Ara: yem, tuz, hacim, Easy-Life, filtre, bakım..." />
     </section>
 
     <section class="grid">
-      <article class="card searchable" data-name="yem gold fish bait">
+      <article id="yem" class="card searchable" data-name="yem gold fish bait gram günlük">
         <h3>🍽️ Gold Fish Bait Yem Hesaplayıcı</h3>
-        <p>Balık sayısı ve ortalama boya göre günlük yem miktarı.</p>
+        <p>Balık sayısı ve ortalama boya göre günlük yem miktarını hesaplar.</p>
         <label>Balık sayısı</label><input id="fishCount" type="number" value="10" />
         <label>Ortalama boy</label>
         <select id="fishSize">
@@ -69,9 +78,9 @@
         <div id="feedResult" class="result"></div>
       </article>
 
-      <article class="card searchable" data-name="akvaryum hacmi litre">
+      <article id="hacim" class="card searchable" data-name="akvaryum hacmi litre ölçü">
         <h3>💧 Akvaryum Hacmi</h3>
-        <p>Ölçülere göre brüt ve yaklaşık net su hacmi.</p>
+        <p>Ölçülere göre brüt ve yaklaşık net su hacmini hesaplar.</p>
         <label>Uzunluk cm</label><input id="l" type="number" value="100" />
         <label>Genişlik cm</label><input id="w" type="number" value="40" />
         <label>Yükseklik cm</label><input id="h" type="number" value="40" />
@@ -79,9 +88,9 @@
         <div id="volumeResult" class="result"></div>
       </article>
 
-      <article class="card searchable" data-name="tuz hesaplama">
+      <article id="tuz" class="card searchable" data-name="tuz hesaplama gram litre">
         <h3>🧂 Tuz Hesaplayıcı</h3>
-        <p>Litre ve g/L değerine göre tuz miktarı.</p>
+        <p>Litre ve g/L değerine göre toplam tuz miktarını hesaplar.</p>
         <label>Akvaryum litre</label><input id="saltLiter" type="number" value="100" />
         <label>Doz</label>
         <select id="saltDose"><option value="1">1 g / litre</option><option value="2">2 g / litre</option><option value="3">3 g / litre</option></select>
@@ -89,43 +98,91 @@
         <div id="saltResult" class="result"></div>
       </article>
 
-      <article class="card searchable" data-name="su değişimi">
+      <article class="card searchable" data-name="su değişimi haftalık bakım">
         <h3>💦 Haftalık Su Değişimi</h3>
-        <p>Akvaryum hacmine göre değiştirilecek su miktarı.</p>
+        <p>Akvaryum hacmine göre haftalık su değişim miktarını hesaplar.</p>
         <label>Akvaryum litre</label><input id="waterLiter" type="number" value="100" />
-        <label>Oran</label><select id="waterRate"><option value=".20">%20</option><option value=".30" selected>%30</option><option value=".40">%40</option></select>
+        <label>Oran</label><select id="waterRate"><option value=".20">%20 Hafif</option><option value=".30" selected>%30 Standart</option><option value=".40">%40 Yoğun</option></select>
         <button onclick="waterCalc()">Hesapla</button>
         <div id="waterResult" class="result"></div>
       </article>
 
-      <article class="card searchable" data-name="filtre debisi">
+      <article class="card searchable" data-name="filtre debisi motor litre saat">
         <h3>🌊 Filtre Debisi</h3>
-        <p>Önerilen filtre debisini hesaplayın.</p>
+        <p>Akvaryum hacmine göre önerilen filtre debisini hesaplar.</p>
         <label>Akvaryum litre</label><input id="flowLiter" type="number" value="100" />
         <label>Çevrim</label><select id="turnover"><option value="5">Saatte 5x</option><option value="7" selected>Saatte 7x</option><option value="10">Saatte 10x</option></select>
         <button onclick="flowCalc()">Hesapla</button>
         <div id="flowResult" class="result"></div>
       </article>
 
-      <article class="card searchable" data-name="easy-life doz">
+      <article id="easy" class="card searchable" data-name="easy-life doz aquamaker easystart filter medium">
         <h3>🧪 Easy-Life Doz Hesaplama</h3>
-        <p>AquaMaker, EasyStart ve Filter Medium yaklaşık doz hesabı.</p>
+        <p>AquaMaker, EasyStart ve Filter Medium için yaklaşık doz hesabı.</p>
         <label>Akvaryum litre</label><input id="doseLiter" type="number" value="100" />
         <label>Ürün</label><select id="doseProduct"><option value="10">AquaMaker</option><option value="10">EasyStart</option><option value="10">Filter Medium</option></select>
         <button onclick="doseCalc()">Hesapla</button>
         <div id="doseResult" class="result"></div>
       </article>
+
+      <article class="card searchable" data-name="oranda kapasite kaç balık beslenir">
+        <h3>🐠 Kaç Oranda Beslenir?</h3>
+        <p>Litre ve balık boyuna göre ortalama kapasite önerisi.</p>
+        <label>Akvaryum litre</label><input id="capLiter" type="number" value="120" />
+        <label>Balık boyu</label>
+        <select id="capSize"><option value="20">5-8 cm yavru</option><option value="30" selected>8-12 cm genç</option><option value="45">12 cm üzeri büyük</option></select>
+        <button onclick="capCalc()">Hesapla</button>
+        <div id="capResult" class="result"></div>
+      </article>
+
+      <article class="card searchable" data-name="akıllı bakım önerisi su bulanık nitrit">
+        <h3>🤖 Akıllı Bakım Önerisi</h3>
+        <p>Duruma göre pratik bakım önerisi oluşturur.</p>
+        <label>Akvaryum litre</label><input id="smartLiter" type="number" value="100" />
+        <label>Balık sayısı</label><input id="smartFish" type="number" value="8" />
+        <label>Durum</label>
+        <select id="smartIssue">
+          <option value="normal">Her şey normal</option>
+          <option value="cloudy">Su bulanık</option>
+          <option value="nitrite">Nitrit / amonyak şüphesi</option>
+          <option value="new">Yeni kurulum</option>
+        </select>
+        <button onclick="smartAdvice()">Öneri Oluştur</button>
+        <div id="smartResult" class="result"></div>
+      </article>
+    </section>
+
+    <section class="product-strip">
+      <div>
+        <span>GOLD FISH BAIT</span>
+        <h2>%56 High Protein Premium Growth Formula</h2>
+        <p>Healthy Growth • Brilliant Colors • Strong Immunity</p>
+      </div>
+      <a href="https://wa.me/905337734115" target="_blank">Sipariş / Bilgi Al</a>
+    </section>
+
+    <section id="contact" class="contact">
+      <img src="logo.png" alt="Gold Fish Oranda Ankara" />
+      <div>
+        <span>İLETİŞİM</span>
+        <h2>Gold Fish Oranda Ankara</h2>
+        <p>Güncel oranda videoları, Gold Fish Bait yem ve Easy-Life ürünleri için WhatsApp'tan yazabilirsiniz.</p>
+        <div class="contact-links">
+          <a class="wa" href="https://wa.me/905337734115" target="_blank">💬 WhatsApp</a>
+          <a href="https://goldfishoranda.com" target="_blank">🌐 Ana Site</a>
+          <a href="https://www.instagram.com/goldfish.orandaankara" target="_blank">📸 Instagram</a>
+        </div>
+      </div>
     </section>
 
     <section class="seo">
-      <h2>Gold Fish Oranda Akvaryum Hesaplama Merkezi</h2>
-      <p>Bu platform, akvaryum hobicilerinin yem miktarı, su hacmi, tuz oranı, filtre debisi ve ürün dozlarını daha kolay hesaplaması için hazırlanmıştır. Sonuçlar bilgilendirme amaçlıdır; ürün etiketleri ve su değerleri ayrıca kontrol edilmelidir.</p>
+      <h2>Akvaryum hesaplama merkezi nedir?</h2>
+      <p>Bu platform; oranda, japon balığı ve akvaryum hobicileri için yem miktarı, akvaryum hacmi, tuz oranı, su değişimi, filtre debisi ve ürün dozlarını daha kolay hesaplamak için hazırlanmıştır. Sonuçlar bilgilendirme amaçlıdır.</p>
     </section>
   </main>
 
   <footer>
-    <img src="logo.png" alt="Gold Fish Oranda Ankara" />
-    <p>Gold Fish Oranda Ankara</p>
+    <p>© Gold Fish Oranda Ankara</p>
     <small>Premium Oranda • Premium Hobi • Premium Hizmet</small>
   </footer>
 

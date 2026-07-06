@@ -23,7 +23,7 @@ function filterCards(){
 function feedCalc(){
   const d=v('fishCount')*parseFloat(document.getElementById('fishSize').value);
   const m=v('meals')||1;
-  show('feedResult',`🐟 Günlük toplam yem: <b>${d.toFixed(2)} g</b><br>🍽️ Öğün başı: <b>${(d/m).toFixed(2)} g</b><br>✅ Gold Fish Bait %56 Protein önerilir.`);
+  show('feedResult',`🐟 Günlük toplam yem: <b>${d.toFixed(2)} g</b><br>🍽️ Öğün başı: <b>${(d/m).toFixed(2)} g</b><br>✅ Gold Fish Bait %56 Protein önerilir. Balıklar yemi 1-2 dakika içinde bitirmelidir.`);
 }
 function volumeCalc(){
   const gross=v('l')*v('w')*v('h')/1000;
@@ -35,7 +35,7 @@ function saltCalc(){
 }
 function waterCalc(){
   const a=v('waterLiter')*parseFloat(document.getElementById('waterRate').value);
-  show('waterResult',`💦 Haftalık değişim: <b>${a.toFixed(0)} L</b>`);
+  show('waterResult',`💦 Haftalık su değişimi: <b>${a.toFixed(0)} L</b>`);
 }
 function flowCalc(){
   const a=v('flowLiter')*parseFloat(document.getElementById('turnover').value);
@@ -47,18 +47,14 @@ function doseCalc(){
 }
 function capCalc(){
   const f=Math.floor(v('capLiter')/parseFloat(document.getElementById('capSize').value));
-  show('capResult',`🐠 Tavsiye edilen maksimum: <b>${f} oranda</b><br>📌 Filtre, su değişimi ve balık boyuna göre değişebilir.`);
-}
-function heaterCalc(){
-  const w=v('heaterLiter')*parseFloat(document.getElementById('heaterLevel').value);
-  show('heaterResult',`🔥 Önerilen ısıtıcı: <b>${Math.ceil(w/25)*25} W</b>`);
+  show('capResult',`🐠 Tavsiye edilen maksimum: <b>${f} oranda</b><br>📌 Filtre, yemleme ve su değişimi düzenine göre değişebilir.`);
 }
 function smartAdvice(){
   const liter=v('smartLiter'), fish=v('smartFish'), issue=document.getElementById('smartIssue').value;
   let text=`📊 Akvaryum: <b>${liter} L</b><br>🐟 Balık sayısı: <b>${fish}</b><br>`;
-  if(issue==="normal") text += "✅ Düzenli bakım: Haftalık %25-30 su değişimi ve kontrollü yemleme.";
-  if(issue==="cloudy") text += "⚠️ Su bulanıklığı için: %30 su değişimi, yemlemeyi azaltma ve filtre kontrolü önerilir.";
-  if(issue==="nitrite") text += "🚨 Nitrit/amonyak şüphesinde: Bugün %40 su değişimi, yemlemeyi azaltma ve su değerlerini test etme önerilir.";
-  if(issue==="new") text += "🆕 Yeni kurulumda: Bakteri kültürü desteği, sabırlı balık ekleme ve düzenli test önerilir.";
+  if(issue==="normal") text += "✅ Haftalık %25-30 su değişimi, kontrollü yemleme ve düzenli gözlem önerilir.";
+  if(issue==="cloudy") text += "⚠️ %30 su değişimi, yemlemeyi azaltma, filtre süngerini kontrol etme ve bakteri desteği önerilir.";
+  if(issue==="nitrite") text += "🚨 Bugün %40 su değişimi, yemlemeyi geçici azaltma ve su değerlerini test etme önerilir.";
+  if(issue==="new") text += "🆕 Yeni kurulumda EasyStart/AquaMaker desteği, sabırlı balık ekleme ve düzenli test önerilir.";
   show('smartResult', text);
 }
