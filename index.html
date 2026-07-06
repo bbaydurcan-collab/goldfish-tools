@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Fish Oranda Dijital Platformu</title>
+<style>
+:root{--bg:#050505;--panel:#101722;--panel2:#0b111a;--gold:#f2c94c;--goldDark:#c9960a;--text:#fff;--muted:#cfcfcf;--line:#2f3948;--green:#22c55e;--red:#ef4444}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#1c1c1c,#050505 55%);color:var(--text)}
+.wrap{max-width:1180px;margin:auto;padding:28px 15px 70px}
+header{text-align:center;padding:12px 0 26px}
+.badge{display:inline-block;border:1px solid var(--goldDark);color:var(--gold);padding:8px 14px;border-radius:999px;font-size:13px;margin-bottom:12px}
+h1{margin:0;color:var(--gold);font-size:34px}.sub{color:var(--muted);margin-top:8px}
+.tabs{display:flex;gap:8px;overflow:auto;margin:10px 0 20px;padding-bottom:8px}
+.tab{white-space:nowrap;background:#111827;border:1px solid var(--line);color:white;padding:11px 14px;border-radius:999px;cursor:pointer;font-weight:700}
+.tab.active{background:linear-gradient(90deg,var(--goldDark),var(--gold));color:#111;border:0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);border-radius:18px;padding:21px;box-shadow:0 12px 28px rgba(0,0,0,.28)}
+.card h2{margin:0 0 13px;color:var(--gold);font-size:20px}label{display:block;margin:11px 0 6px;font-size:14px}
+input,select{width:100%;background:#111827;border:1px solid #364154;color:white;border-radius:10px;padding:13px;font-size:15px}
+button{width:100%;margin-top:15px;border:0;border-radius:11px;padding:14px;font-weight:900;cursor:pointer;background:linear-gradient(90deg,var(--goldDark),var(--gold));color:#111}
+.result{display:none;margin-top:15px;background:#111827;border:1px solid #3b4658;border-radius:13px;padding:15px;line-height:1.8}.result b{color:var(--gold)}
+.note{font-size:13px;color:#e7bd42;margin-top:12px;line-height:1.45}.section{display:none}.section.active{display:block}
+.cta{margin-top:28px;text-align:center;background:#101010;border:1px solid var(--goldDark);border-radius:18px;padding:24px}.cta h3{color:var(--gold);margin:0 0 8px;font-size:24px}
+.cta a{display:inline-block;margin:10px 5px 0;background:#25D366;color:#08120b;text-decoration:none;font-weight:900;border-radius:999px;padding:13px 20px}
+.small{font-size:12px;color:#9b9b9b;text-align:center;margin-top:25px}.pill{display:inline-block;padding:4px 9px;border-radius:999px;background:#172033;color:#fff;margin:3px;font-size:12px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}h1{font-size:26px}.wrap{padding-top:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="badge">Gold Fish Oranda Ankara • Ücretsiz Dijital Platform</div>
+<h1>Gold Fish Oranda Dijital Platformu</h1>
+<div class="sub">Yemleme • Su değişimi • Easy-Life doz • Akvaryum kapasitesi • Balık bakım takibi</div>
+</header>
+
+<div class="tabs">
+<button class="tab active" onclick="openSec('temel',this)">Temel Araçlar</button>
+<button class="tab" onclick="openSec('bakim',this)">Bakım & Su</button>
+<button class="tab" onclick="openSec('oranda',this)">Oranda Rehberi</button>
+<button class="tab" onclick="openSec('urun',this)">Ürün Önerici</button>
+</div>
+
+<section id="temel" class="section active">
+<div class="grid">
+<div class="card"><h2>🐟 Gold Fish Bait Yem Hesaplayıcı</h2><label>Balık sayısı</label><input id="fishCount" type="number" value="10"><label>Ortalama boy</label><select id="fishSize"><option value="0.05">5 cm altı</option><option value="0.10">5-8 cm</option><option value="0.20" selected>8-12 cm</option><option value="0.35">12 cm üzeri</option></select><label>Günlük öğün</label><select id="meals"><option>1</option><option selected>2</option><option>3</option></select><button onclick="feedCalc()">Hesapla</button><div id="feedResult" class="result"></div><div class="note">Balıklar yemi 1-2 dakika içinde bitirmelidir. Artan yem suyu bozar.</div></div>
+<div class="card"><h2>📏 Akvaryum Hacmi</h2><label>Uzunluk cm</label><input id="l" type="number" value="100"><label>Genişlik cm</label><input id="w" type="number" value="40"><label>Yükseklik cm</label><input id="h" type="number" value="40"><button onclick="volumeCalc()">Hesapla</button><div id="volumeResult" class="result"></div><div class="note">Dekor ve boşluk payı nedeniyle net su hacmi genelde daha düşüktür.</div></div>
+<div class="card"><h2>🐠 Kaç Oranda Beslenir?</h2><label>Akvaryum litre</label><input id="capLiter" type="number" value="120"><label>Balık boyu</label><select id="capSize"><option value="20">5-8 cm yavru</option><option value="30" selected>8-12 cm genç</option><option value="45">12 cm üzeri büyük</option></select><button onclick="capCalc()">Hesapla</button><div id="capResult" class="result"></div><div class="note">Filtre gücü, su değişimi ve yemleme düzeni kapasiteyi etkiler.</div></div>
+<div class="card"><h2>📈 Büyüme Takibi</h2><label>Bugünkü boy cm</label><input id="now" type="number" value="8"><label>Aylık tahmini büyüme cm</label><input id="growth" type="number" value="0.7" step="0.1"><label>Ay</label><input id="month" type="number" value="3"><button onclick="growthCalc()">Hesapla</button><div id="growthResult" class="result"></div><div class="note">Güçlü yem + temiz su + düzenli bakım büyümeyi destekler.</div></div>
+</div>
+</section>
+
+<section id="bakim" class="section">
+<div class="grid">
+<div class="card"><h2>💧 Su Değişimi</h2><label>Akvaryum litre</label><input id="waterLiter" type="number" value="100"><label>Değişim oranı</label><select id="waterRate"><option value=".20">%20 Hafif</option><option value=".30" selected>%30 Standart</option><option value=".40">%40 Yoğun stok</option></select><button onclick="waterCalc()">Hesapla</button><div id="waterResult" class="result"></div></div>
+<div class="card"><h2>🧪 Easy-Life Doz</h2><label>Akvaryum litre</label><input id="doseLiter" type="number" value="100"><label>Ürün</label><select id="doseProduct"><option value="10">AquaMaker</option><option value="10">EasyStart</option><option value="10">Filter Medium</option></select><button onclick="doseCalc()">Hesapla</button><div id="doseResult" class="result"></div><div class="note">Etiket talimatını ayrıca kontrol edin.</div></div>
+<div class="card"><h2>🌊 Filtre Debisi</h2><label>Akvaryum litre</label><input id="flowLiter" type="number" value="100"><label>Çevrim hedefi</label><select id="turnover"><option value="5">Saatte 5x</option><option value="7" selected>Saatte 7x</option><option value="10">Saatte 10x</option></select><button onclick="flowCalc()">Hesapla</button><div id="flowResult" class="result"></div></div>
+<div class="card"><h2>🧂 Tuz Hesaplayıcı</h2><label>Akvaryum litre</label><input id="saltLiter" type="number" value="100"><label>Doz</label><select id="saltDose"><option value="1">1 g / litre hafif</option><option value="2">2 g / litre orta</option><option value="3">3 g / litre güçlü</option></select><button onclick="saltCalc()">Hesapla</button><div id="saltResult" class="result"></div><div class="note">Tuz kullanımı tür, bitki ve tedavi durumuna göre değişir.</div></div>
+</div>
+</section>
+
+<section id="oranda" class="section">
+<div class="grid">
+<div class="card"><h2>⭐ Oranda Kalite Ön Değerlendirme</h2><label>Baş gelişimi</label><select id="head"><option value="1">Zayıf</option><option value="2">Orta</option><option value="3">Güçlü</option></select><label>Vücut formu</label><select id="body"><option value="1">Zayıf</option><option value="2">Orta</option><option value="3">Güçlü</option></select><label>Renk/parlaklık</label><select id="color"><option value="1">Zayıf</option><option value="2">Orta</option><option value="3">Güçlü</option></select><button onclick="qualityCalc()">Değerlendir</button><div id="qualityResult" class="result"></div></div>
+<div class="card"><h2>📋 Haftalık Bakım Planı</h2><label>Akvaryum yoğunluğu</label><select id="density"><option value="normal">Normal</option><option value="high">Yoğun</option></select><button onclick="planCalc()">Plan Oluştur</button><div id="planResult" class="result"></div></div>
+</div>
+</section>
+
+<section id="urun" class="section">
+<div class="grid">
+<div class="card"><h2>🛒 Ürün Önerici</h2><label>Bugünkü ihtiyaç</label><select id="need"><option value="new">Yeni akvaryum kurdum</option><option value="water">Su değişimi yaptım</option><option value="cloudy">Su bulanık</option><option value="growth">Balık büyütmek istiyorum</option></select><button onclick="recommend()">Öner</button><div id="recResult" class="result"></div></div>
+<div class="card"><h2>🎯 Başlangıç Seti</h2><p><span class="pill">AquaMaker</span><span class="pill">EasyStart</span><span class="pill">Filter Medium</span><span class="pill">Gold Fish Bait</span></p><div class="note">Yeni başlayan müşteriye hem su hazırlığı hem yemleme için mantıklı set.</div><button onclick="show('setResult','✅ Tavsiye edilen set:<br><b>AquaMaker + EasyStart + Filter Medium + Gold Fish Bait</b><br>WhatsApp sipariş butonuyla müşteriyi satışa yönlendirebilirsin.')">Seti Göster</button><div id="setResult" class="result"></div></div>
+</div>
+</section>
+
+<div class="cta">
+<h3>Gold Fish Bait %56 High Protein</h3>
+<div>Premium Growth Formula • Sağlıklı büyüme • Parlak renkler • Güçlü kondisyon</div>
+<a href="https://wa.me/905337734115" target="_blank">WhatsApp'tan Sipariş Ver</a>
+<a href="https://goldfishoranda.com" target="_blank" style="background:#f2c94c;color:#111">Siteye Git</a>
+</div>
+<div class="small">Bilgilendirme amaçlıdır. Balık sağlığı için su değerlerinizi düzenli ölçün.</div>
+</div>
+<script>
+function openSec(id,btn){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));btn.classList.add('active')}
+function v(id){return Math.max(0,parseFloat(document.getElementById(id).value)||0)} function show(id,html){let e=document.getElementById(id);e.innerHTML=html;e.style.display='block'}
+function feedCalc(){let d=v('fishCount')*parseFloat(document.getElementById('fishSize').value), m=v('meals')||1;show('feedResult',`🐟 Günlük toplam: <b>${d.toFixed(2)} g</b><br>🍽️ Öğün başı: <b>${(d/m).toFixed(2)} g</b><br>✅ Gold Fish Bait için güvenli başlangıç miktarı.`)}
+function volumeCalc(){let gross=v('l')*v('w')*v('h')/1000;show('volumeResult',`📏 Brüt hacim: <b>${gross.toFixed(0)} L</b><br>💧 Yaklaşık net su: <b>${(gross*.85).toFixed(0)} L</b>`)}
+function capCalc(){let f=Math.floor(v('capLiter')/parseFloat(document.getElementById('capSize').value));show('capResult',`🐠 Tavsiye edilen maksimum: <b>${f} oranda</b>`)}
+function growthCalc(){show('growthResult',`📈 Tahmini boy: <b>${(v('now')+v('growth')*v('month')).toFixed(1)} cm</b>`)}
+function waterCalc(){let a=v('waterLiter')*parseFloat(document.getElementById('waterRate').value);show('waterResult',`💧 Haftalık değişim: <b>${a.toFixed(0)} L</b>`)}
+function doseCalc(){let a=v('doseLiter')/100*parseFloat(document.getElementById('doseProduct').value);show('doseResult',`🧪 Tavsiye edilen doz: <b>${a.toFixed(1)} ml</b>`)}
+function flowCalc(){let a=v('flowLiter')*parseFloat(document.getElementById('turnover').value);show('flowResult',`🌊 Önerilen filtre debisi: <b>${a.toFixed(0)} L/saat</b>`)}
+function saltCalc(){let a=v('saltLiter')*parseFloat(document.getElementById('saltDose').value);show('saltResult',`🧂 Toplam tuz: <b>${a.toFixed(0)} g</b>`)}
+function qualityCalc(){let s=v('head')+v('body')+v('color'), q=s>=8?'Imperial / Royal seviyesi potansiyel':s>=6?'Prestige seviyesi potansiyel':'Classic / gelişime açık';show('qualityResult',`⭐ Ön değerlendirme: <b>${q}</b><br>Bu sadece görsel ön değerlendirmedir.`)}
+function planCalc(){let high=document.getElementById('density').value==='high';show('planResult',high?`📋 Yoğun bakım:<br><b>Haftada 2 kez %30 su değişimi</b><br>Günlük gözlem, kontrollü yemleme, filtre kontrolü.`:`📋 Standart bakım:<br><b>Haftada 1 kez %25-30 su değişimi</b><br>Günlük yemleme kontrolü, haftalık dip çekimi.`)}
+function recommend(){let n=document.getElementById('need').value;let t={new:'✅ EasyStart + AquaMaker + Gold Fish Bait',water:'✅ AquaMaker + Filter Medium',cloudy:'✅ Filter Medium + kontrollü yemleme + su değişimi',growth:'✅ Gold Fish Bait %56 Protein + düzenli su değişimi'};show('recResult',t[n])}
+</script>
+</body></html>
