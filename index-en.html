@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Fish Oranda Ankara | Premium Aquarium Calculator Center</title>
+<meta name="description" content="Premium aquarium calculator center with feeding, volume, water change, Easy-Life dosage and fish care assistant.">
+<link rel="icon" href="logo.png"><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader" class="loader"><div><img src="logo.png"><p>PREMIUM DIGITAL PLATFORM</p></div></div>
+<header class="topbar">
+<a class="brand" href="#top"><img src="logo.png"><span><strong>Gold Fish Oranda Ankara</strong><small>Premium Oranda • Premium Hobby • Premium Service</small></span></a>
+<nav>
+<a href="#tools">Calculators</a><a href="#doctorSec">What’s Wrong With My Fish?</a><a href="#contact">Contact</a><a href="https://goldfishoranda.com" target="_blank">Main Website</a><a class="wa" href="https://wa.me/905337734115" target="_blank">WhatsApp</a><a class="lang" href="index.html">🇹🇷 Türkçe</a>
+</nav></header>
+<main id="top">
+<section class="hero"><img src="logo.png"><p class="eyebrow">Turkey's Premium Aquarium Calculator Center</p><h1>Gold Fish Oranda<br>Digital Platform</h1><p>Calculate feeding, volume, salt, water changes, Easy-Life dosage and care recommendations in one place.</p><div class="buttons"><a class="btn gold" href="#doctorSec">What’s Wrong With My Fish?</a><a class="btn outline" href="#tools">Start Calculating</a></div></section>
+<section class="quick"><a href="#doctorSec">🤖 Fish Care Assistant</a><a href="#feed">🍽️ Feeding</a><a href="#volume">💧 Volume</a><a href="#easy">🧪 Easy-Life</a></section>
+<section id="doctorSec" class="diagnosis"><div class="section-title"><span>AI-ASSISTED PRE-CARE ASSISTANT</span><h2>What’s Wrong With My Fish?</h2><p>Select symptoms and get possible causes, action steps, product suggestions and feeding guidance.</p></div><div class="diag-layout"><div class="panel"><h3>Symptoms</h3>
+<label class="check"><input type="checkbox" id="sBottom"> Fish stays at the bottom</label>
+<label class="check"><input type="checkbox" id="sNoEat"> Not eating</label>
+<label class="check"><input type="checkbox" id="sWhite"> White spots</label>
+<label class="check"><input type="checkbox" id="sGill"> Rapid gill movement</label>
+<label class="check"><input type="checkbox" id="sCloudy"> Cloudy water</label>
+<label>Aquarium liters</label><input id="diagLiter" type="number" value="100"><button onclick="fishDoctor()">Create Plan</button></div><div id="doctor" class="doctor"><h3>Result will appear here</h3><p>Select symptoms and click the button.</p></div></div></section>
+<section id="tools" class="section-title"><span>PROFESSIONAL TOOLS</span><h2>Aquarium Calculators</h2><input id="search" oninput="filterCards()" placeholder="🔍 Search: feeding, salt, volume, Easy-Life..."></section>
+<section class="grid">
+<article id="feed" class="card searchable" data-name="feeding yem gold fish bait"><h3>🍽️ Gold Fish Bait Feeding Calculator</h3><p>Daily feeding amount by fish count and size.</p><label>Number of fish</label><input id="fishCount" type="number" value="10"><label>Average size</label><select id="fishSize"><option value="0.05">5 cm</option><option value="0.10">5-8 cm</option><option value="0.20" selected>8-12 cm</option><option value="0.35">12+ cm</option></select><label>Meals per day</label><select id="meals"><option>1</option><option selected>2</option><option>3</option></select><button onclick="feedCalc()">Calculate</button><div id="feedResult" class="result"></div></article>
+<article id="volume" class="card searchable" data-name="volume hacim litre"><h3>💧 Aquarium Volume Calculator</h3><p>Gross and net water volume.</p><label>Length cm</label><input id="l" type="number" value="100"><label>Width cm</label><input id="w" type="number" value="40"><label>Height cm</label><input id="h" type="number" value="40"><button onclick="volumeCalc()">Calculate</button><div id="volumeResult" class="result"></div></article>
+<article class="card searchable" data-name="salt tuz"><h3>🧂 Salt Calculator</h3><p>Total salt amount by liters.</p><label>Aquarium liters</label><input id="saltLiter" type="number" value="100"><label>Dose</label><select id="saltDose"><option value="1">1 g/L</option><option value="2">2 g/L</option><option value="3">3 g/L</option></select><button onclick="saltCalc()">Calculate</button><div id="saltResult" class="result"></div></article>
+<article class="card searchable" data-name="water change su değişimi"><h3>💦 Weekly Water Change</h3><p>Water change amount by volume.</p><label>Aquarium liters</label><input id="waterLiter" type="number" value="100"><label>Rate</label><select id="waterRate"><option value=".20">20%</option><option value=".30" selected>30%</option><option value=".40">40%</option></select><button onclick="waterCalc()">Calculate</button><div id="waterResult" class="result"></div></article>
+<article class="card searchable" data-name="filter filtre"><h3>🌊 Filter Flow Rate</h3><p>Recommended filter flow rate.</p><label>Aquarium liters</label><input id="flowLiter" type="number" value="100"><label>Turnover</label><select id="turnover"><option value="5">5x</option><option value="7" selected>7x</option><option value="10">10x</option></select><button onclick="flowCalc()">Calculate</button><div id="flowResult" class="result"></div></article>
+<article id="easy" class="card searchable" data-name="easy-life dose doz"><h3>🧪 Easy-Life Dosage Calculator</h3><p>Approximate dose for AquaMaker, EasyStart and Filter Medium.</p><label>Aquarium liters</label><input id="doseLiter" type="number" value="100"><label>Product</label><select id="doseProduct"><option value="10">AquaMaker</option><option value="10">EasyStart</option><option value="10">Filter Medium</option></select><button onclick="doseCalc()">Calculate</button><div id="doseResult" class="result"></div></article>
+</section>
+<section id="contact" class="contact"><img src="logo.png"><div><span>CONTACT</span><h2>Gold Fish Oranda Ankara</h2><p>Message us on WhatsApp for oranda videos, Gold Fish Bait food and Easy-Life products.</p><a class="wa" href="https://wa.me/905337734115" target="_blank">WhatsApp</a><a href="https://goldfishoranda.com" target="_blank">Main Website</a></div></section>
+</main><footer><p>© Gold Fish Oranda Ankara</p><small>Premium Oranda • Premium Hobby • Premium Service</small></footer><script src="script.js"></script></body></html>
