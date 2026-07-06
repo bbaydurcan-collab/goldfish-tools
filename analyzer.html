@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gold Fish Oranda AI Lab | Oranda Analiz Merkezi</title>
+<meta name="description" content="Gold Fish Oranda Ankara AI Oranda Analiz Merkezi. Fotoğraf yükleyin, oranda kalitesi için demo ön değerlendirme raporu oluşturun.">
+<link rel="icon" href="logo.png">
+<style>
+:root{--gold:#d6a514;--gold2:#ffd86b;--gold3:#8d650b;--green:#25D366;--line:rgba(214,165,20,.35);--muted:#d7d7d7}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:radial-gradient(circle at top,#33270b,#050505 42%,#000 100%);color:white}
+body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 20px;background:rgba(0,0,0,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none}
+.brand img{width:70px;height:70px;object-fit:cover;border-radius:16px;border:1px solid var(--gold)}
+.brand strong{display:block;color:var(--gold2);font-size:18px}.brand small{color:var(--muted);font-size:12px}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav a{text-decoration:none;color:white;background:rgba(17,24,39,.75);border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:10px 14px;font-size:13px}.wa{background:var(--green)!important;color:#06150a!important;font-weight:900}
+main{max-width:1080px;margin:auto;padding:24px 15px 70px}
+.hero{text-align:center;border:1px solid var(--line);border-radius:34px;padding:42px 18px;background:linear-gradient(180deg,rgba(214,165,20,.16),rgba(0,0,0,.78));box-shadow:0 24px 70px rgba(0,0,0,.55)}
+.hero img{width:320px;max-width:92%;border-radius:24px;box-shadow:0 0 45px rgba(214,165,20,.35)}
+.eyebrow{color:var(--gold2);letter-spacing:2px;font-size:12px;font-weight:900;margin-top:18px}
+h1{font-size:44px;line-height:1.05;color:var(--gold2);margin:10px 0}.hero p{max-width:760px;margin:auto;color:#eee;line-height:1.6}
+.panel{margin-top:22px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(180deg,rgba(214,165,20,.11),rgba(0,0,0,.72));padding:24px}
+.upload{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.drop{border:2px dashed rgba(255,216,107,.55);border-radius:24px;padding:28px;text-align:center;background:rgba(0,0,0,.45)}
+.drop h2{color:var(--gold2);margin-top:0}.drop p{color:var(--muted)}
+input[type=file]{display:none}
+.uploadBtn,.analyzeBtn,.resetBtn{display:inline-block;text-decoration:none;border:0;border-radius:999px;padding:14px 24px;background:linear-gradient(90deg,var(--gold3),var(--gold2),var(--gold3));color:#111;font-weight:900;cursor:pointer;margin-top:12px}
+.resetBtn{background:#111827;color:white;border:1px solid rgba(255,255,255,.2)}
+.preview{border:1px solid rgba(214,165,20,.25);border-radius:24px;min-height:360px;background:#050505;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.preview img{width:100%;height:100%;object-fit:cover;display:none}
+.preview span{color:#999}
+.progressBox{display:none;margin-top:22px;border:1px solid rgba(214,165,20,.25);border-radius:22px;background:#060606;padding:20px}
+.step{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(255,255,255,.08);padding:10px 0;color:#eee}.bar{height:8px;background:#111827;border-radius:999px;overflow:hidden;margin-top:14px}.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold2));transition:width .5s}
+.report{display:none;margin-top:22px}
+.reportHeader{text-align:center;border:1px solid var(--line);border-radius:24px;padding:22px;background:rgba(0,0,0,.62)}
+.score{font-size:56px;color:var(--gold2);font-weight:900}.classBadge{display:inline-block;margin-top:8px;border:1px solid var(--gold);border-radius:999px;padding:10px 18px;color:var(--gold2);font-weight:900}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:16px}
+.metric{border:1px solid rgba(214,165,20,.25);border-radius:18px;padding:16px;background:rgba(5,5,5,.72)}
+.metric b{color:var(--gold2)}.stars{color:var(--gold2);font-size:20px;margin-top:8px}
+.comment{margin-top:16px;border:1px solid rgba(214,165,20,.25);border-radius:20px;padding:18px;background:rgba(214,165,20,.08);line-height:1.7;color:#eee}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.actions button,.actions a{width:auto;text-decoration:none;border-radius:999px;padding:12px 16px;border:1px solid var(--line);background:#111827;color:white;font-weight:900;cursor:pointer}.actions .share{background:var(--green);color:#06150a;border:0}
+.note{font-size:12px;color:#d6c28a;line-height:1.5;margin-top:18px}
+@media(max-width:800px){.topbar{display:block;position:relative}.brand img{width:64px;height:64px}nav{margin-top:12px}.upload,.metrics{grid-template-columns:1fr}h1{font-size:32px}.preview{min-height:260px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html"><img src="logo.png" alt="Gold Fish Oranda Ankara"><span><strong>Gold Fish Oranda Ankara</strong><small>AI Oranda Analiz Merkezi</small></span></a>
+<nav>
+<a href="index.html">Hesaplama Merkezi</a>
+<a href="https://goldfishoranda.com" target="_blank">Ana Site</a>
+<a class="wa" href="https://wa.me/905337734115" target="_blank">WhatsApp</a>
+</nav>
+</header>
+
+<main>
+<section class="hero">
+<img src="logo.png" alt="Gold Fish Oranda Ankara">
+<div class="eyebrow">YAPAY ZEKÂ DESTEKLİ ÖN DEĞERLENDİRME</div>
+<h1>AI Oranda Analiz Merkezi</h1>
+<p>Orandanızın fotoğrafını yükleyin. Sistem baş yapısı, vücut formu, kuyruk, renk ve genel kalite için demo ön değerlendirme raporu oluştursun.</p>
+</section>
+
+<section class="panel">
+<div class="upload">
+<div class="drop">
+<h2>📷 Fotoğraf Yükle</h2>
+<p>Balığın yan profilden, net ve iyi ışıklı fotoğrafını yükleyin. İlk sürüm demo rapor üretir; gerçek AI analiz V2’de eklenecektir.</p>
+<label class="uploadBtn" for="fileInput">Fotoğraf Seç</label>
+<input id="fileInput" type="file" accept="image/*">
+<br>
+<button class="analyzeBtn" onclick="startAnalysis()">Analiz Et</button>
+<button class="resetBtn" onclick="resetAll()">Yeni Analiz</button>
+</div>
+<div class="preview">
+<img id="previewImg" alt="Yüklenen fotoğraf">
+<span id="previewText">Fotoğraf önizlemesi burada görünecek</span>
+</div>
+</div>
+
+<div class="progressBox" id="progressBox">
+<h3 style="color:var(--gold2);margin-top:0">AI analizi hazırlanıyor...</h3>
+<div class="step"><span>Baş yapısı inceleniyor</span><b id="s1">Bekliyor</b></div>
+<div class="step"><span>Vücut formu değerlendiriliyor</span><b id="s2">Bekliyor</b></div>
+<div class="step"><span>Kuyruk simetrisi hesaplanıyor</span><b id="s3">Bekliyor</b></div>
+<div class="step"><span>Renk dağılımı analiz ediliyor</span><b id="s4">Bekliyor</b></div>
+<div class="step"><span>Kalite sınıfı oluşturuluyor</span><b id="s5">Bekliyor</b></div>
+<div class="bar"><div id="barFill"></div></div>
+</div>
+
+<div class="report" id="report">
+<div class="reportHeader">
+<h2>🐟 AI Oranda Ön Değerlendirme Raporu</h2>
+<div class="score" id="overallScore">91/100</div>
+<div class="classBadge" id="classBadge">👑 ROYAL QUALITY</div>
+</div>
+<div class="metrics">
+<div class="metric"><b>Baş Yapısı</b><div class="stars">★★★★☆</div><p>Wen gelişimi güçlü ve dengeli görünüyor.</p></div>
+<div class="metric"><b>Vücut Formu</b><div class="stars">★★★★★</div><p>Gövde formu kompakt ve oranda standardına uygun.</p></div>
+<div class="metric"><b>Kuyruk</b><div class="stars">★★★★☆</div><p>Kuyruk açısı iyi, simetri geliştirilebilir.</p></div>
+<div class="metric"><b>Renk</b><div class="stars">★★★★☆</div><p>Renk dağılımı dengeli ve dikkat çekici.</p></div>
+</div>
+<div class="comment">
+<b>AI Yorumu:</b><br>
+Bu balık fotoğrafa göre güçlü bir vücut formuna ve başarılı baş gelişimine sahip görünüyor. Kuyruk açıklığı iyi seviyede. Düzenli Gold Fish Bait beslenmesi ve temiz su rutiniyle gelişim potansiyeli yüksek görünmektedir.
+<br><br>
+<b>Öneri:</b> Haftalık düzenli su değişimi, kaliteli yemleme ve stres oluşturmayan bakım rutini tavsiye edilir.
+</div>
+<div class="actions">
+<button class="share" onclick="shareReport()">WhatsApp’ta Paylaş</button>
+<button onclick="window.print()">PDF / Yazdır</button>
+<a href="https://wa.me/905337734115" target="_blank">Gerçek Değerlendirme İçin Yaz</a>
+</div>
+</div>
+
+<p class="note">Bu rapor fotoğrafa dayalı demo ön değerlendirmedir. Resmi yarışma puanı veya kesin kalite değerlendirmesi değildir. Fotoğraf açısı, ışık ve balığın pozisyonu sonucu etkileyebilir.</p>
+</section>
+</main>
+
+<script>
+const input=document.getElementById('fileInput');
+const img=document.getElementById('previewImg');
+const text=document.getElementById('previewText');
+input.addEventListener('change', e=>{
+ const file=e.target.files[0];
+ if(!file) return;
+ img.src=URL.createObjectURL(file);
+ img.style.display='block';
+ text.style.display='none';
+});
+function startAnalysis(){
+ document.getElementById('progressBox').style.display='block';
+ document.getElementById('report').style.display='none';
+ const steps=['s1','s2','s3','s4','s5'];
+ let i=0;
+ const fill=document.getElementById('barFill');
+ steps.forEach(s=>document.getElementById(s).innerText='Bekliyor');
+ const timer=setInterval(()=>{
+   if(i<steps.length){
+     document.getElementById(steps[i]).innerText='Tamamlandı';
+     fill.style.width=((i+1)/steps.length*100)+'%';
+     i++;
+   } else {
+     clearInterval(timer);
+     setTimeout(()=>document.getElementById('report').style.display='block',400);
+   }
+ },700);
+}
+function resetAll(){
+ input.value='';
+ img.src='';
+ img.style.display='none';
+ text.style.display='block';
+ document.getElementById('progressBox').style.display='none';
+ document.getElementById('report').style.display='none';
+ document.getElementById('barFill').style.width='0';
+}
+function shareReport(){
+ const msg=encodeURIComponent('Gold Fish Oranda Ankara AI Oranda Ön Değerlendirme Raporu:\\nGenel Puan: 91/100\\nSınıf: ROYAL QUALITY\\nhttps://hesap.goldfishoranda.com/analyzer.html');
+ window.open('https://wa.me/?text='+msg,'_blank');
+}
+</script>
+</body>
+</html>
